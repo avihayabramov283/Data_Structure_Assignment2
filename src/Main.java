@@ -1,19 +1,26 @@
 public class Main {
     public static void main(String[] args) {
-        MyArray<String> myArray = new MyArray<>();
+        MyLinkedList<String> list = new MyLinkedList<>();
 
-        //add elements
-        myArray.insert(new ArrayElement<>(0, "A"));
-        myArray.insert(new ArrayElement<>(1, "B"));
-        myArray.insert(new ArrayElement<>(2, "C"));
-        myArray.insert(new ArrayElement<>(3, "D"));
+        list.insert(new ListLink<>(1, "A"));
+        list.insert(new ListLink<>(2, "B"));
+        list.insert(new ListLink<>(3, "C"));
 
         System.out.println("Before reverse: ");
-        System.out.print(myArray);
+        System.out.print(list);
 
-        myArray.reverse();
+        list.reverse();
 
         System.out.println("After reverse: ");
-        System.out.print(myArray);
+        System.out.print(list);
+
+        System.out.println("Before reverse: ");
+        System.out.print(list);
+
+        list.reverse();
+
+        System.out.println("After reverse: ");
+        System.out.print(list);
+
     }
 }

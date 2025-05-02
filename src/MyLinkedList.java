@@ -11,7 +11,20 @@ public class MyLinkedList<T> {
      * Implement the following method.
      */
     public void reverse() {
-    	throw new UnsupportedOperationException("Delete this line and replace it with your implementation");
+        ListLink<T> current = head;
+
+        while (current != null) {
+            ListLink<T> nextNode = current.getNext();
+
+            current.setNext(current.getPrev());
+            current.setPrev(nextNode);
+
+            current = nextNode;
+        }
+
+        ListLink<T> temp = head;
+        head = tail;
+        tail = temp;
     }
     
     /***
