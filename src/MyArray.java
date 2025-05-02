@@ -16,7 +16,20 @@ public class MyArray<T> {
      * Implement the following method.
      */
     public void reverse() {
-    	throw new UnsupportedOperationException("Delete this line and replace it with your implementation");
+        for(int i = 0; i < size / 2; i++) {
+            int j = size - 1 - i;
+
+            //change
+            ArrayElement<T> temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+
+            //update index
+            array[i].setIndex(i);
+            array[j].setIndex(j);
+        }
+        if(size % 2 != 0)
+            array[size / 2 - 1].setIndex(size / 2);
     }
 
     /***
