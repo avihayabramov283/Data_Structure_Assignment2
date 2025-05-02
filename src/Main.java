@@ -1,26 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        MyLinkedList<String> list = new MyLinkedList<>();
+        MyAVLTree<String> tree = new MyAVLTree<>();
 
-        list.insert(new ListLink<>(1, "A"));
-        list.insert(new ListLink<>(2, "B"));
-        list.insert(new ListLink<>(3, "C"));
+        tree.insert(new TreeNode<>(10, "A"));
+        tree.insert(new TreeNode<>(5, "B"));
+        tree.insert(new TreeNode<>(3, "C"));
+        tree.insert(new TreeNode<>(7, "D"));
+        tree.insert(new TreeNode<>(1, "E"));
 
-        System.out.println("Before reverse: ");
-        System.out.print(list);
-
-        list.reverse();
-
-        System.out.println("After reverse: ");
-        System.out.print(list);
-
-        System.out.println("Before reverse: ");
-        System.out.print(list);
-
-        list.reverse();
-
-        System.out.println("After reverse: ");
-        System.out.print(list);
+        System.out.println("Depth of min: " + tree.depthOfMin());
 
     }
 }
