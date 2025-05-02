@@ -4,6 +4,8 @@
  * @param <T> The type of the satellite data.
  */
 public class TreeNode<T> extends Element<T> {
+	private TreeNode<T> nextInserted;
+	private TreeNode<T> prevInserted;
 	/*
      * You may add any fields that you wish to add.
      * Remember that the use of built-in Java classes is not allowed,
@@ -16,6 +18,11 @@ public class TreeNode<T> extends Element<T> {
 	private TreeNode<T> right;
 	private TreeNode<T> p;		//parent
 	private int height;
+
+	public TreeNode<T> getNextInserted() { return nextInserted; }
+	public TreeNode<T> getPrevInserted() { return prevInserted; }
+	public void setNextInserted(TreeNode<T> nextInserted) { this.nextInserted = nextInserted; }
+	public void setPrevInserted(TreeNode<T> prevInserted) { this.prevInserted = prevInserted; }
 
 	public TreeNode(int key, T satelliteData) {
 		super(key, satelliteData);

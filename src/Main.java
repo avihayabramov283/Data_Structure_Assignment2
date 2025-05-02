@@ -1,35 +1,47 @@
-
 public class Main {
     public static void main(String[] args) {
-        MyDynamicSet<String> set = new MyDynamicSet<>(10);
+        MyFirstDataStructure<String> ds = new MyFirstDataStructure<>(10);
 
-        // הכנסת איברים (לא שומרים את המצביעים!)
-        set.insert(new Element<>(5, "five"));
-        set.insert(new Element<>(2, "two"));
-        set.insert(new Element<>(8, "eight"));
+        // הכנסת איברים
+        ds.insert(new Element<>(10, "ten"));
+        ds.insert(new Element<>(5, "five"));
+        ds.insert(new Element<>(20, "twenty"));
+        ds.insert(new Element<>(15, "fifteen"));
 
-        // חיפוש כדי לקבל את המצביעים הנכונים (ListLink<T>)
-        Element<String> five = set.search(5);
-        Element<String> two = set.search(2);
-        Element<String> eight = set.search(8);
+        System.out.println("== After Inserts ==");
+        printState(ds, 10, 5, 20, 15);
 
-        // בדיקות
-        System.out.println("Search 5: " + five);         // [5]
-        System.out.println("Search 4: " + set.search(4)); // null
+        // מחיקת 20 (המקסימום)
+        ds.findAndRemove(20);
+        System.out.println("\n== After Removing 20 ==");
+        printState(ds, 10, 5, 20, 15);
 
-        System.out.println("Minimum: " + set.minimum()); // [2]
-        System.out.println("Maximum: " + set.maximum()); // [8]
+        // מחיקת 10 (הראשון)
+        ds.findAndRemove(10);
+        System.out.println("\n== After Removing 10 ==");
+        printState(ds, 10, 5, 20, 15);
 
-        System.out.println("Successor of 5: " + set.successor(five));     // [8]
-        System.out.println("Predecessor of 5: " + set.predecessor(five)); // [2]
+        // מחיקת 15 (האחרון)
+        ds.findAndRemove(15);
+        System.out.println("\n== After Removing 15 ==");
+        printState(ds, 10, 5, 20, 15);
+    }
 
-        // מחיקה
-        set.delete(five);
+    private static void printState(MyFirstDataStructure<String> ds, int... keys) {
+        System.out.println("First: " + ds.first());
+        System.out.println("Last: " + ds.last());
+        System.out.println("Max: " + ds.maximum());
 
-        // בדיקה מחדש אחרי מחיקה
-        System.out.println("After deleting 5:");
-        System.out.println("Search 5: " + set.search(5));           // null
-        System.out.println("Successor of 2: " + set.successor(two));   // [8]
-        System.out.println("Predecessor of 8: " + set.predecessor(eight)); // [2]
+        for (int key : keys) {
+            TreeNode<String> node = (TreeNode<String>) ds.avlTree.search(key);
+            if (node != null) {
+                String prev = node.getPrevInserted() != null ? node.getPrevInserted().key() + "" : "null";
+                String next = node.getNextInserted() != null ? node.getNextInserted().key() + "" : "null";
+                System.out.println("[" + key + "] prevInserted: " + prev + ", nextInserted: " + next);
+            } else {
+                System.out.println("[" + key + "] not in structure");
+            }
+        }
     }
 }
+
