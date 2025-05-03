@@ -104,6 +104,7 @@ public class MySecondDataStructure {
 			p.setPrice(p.price() + raise);
 			if(p.price() > mostExpensiveProduct.price())
 				mostExpensiveProduct = p;
+			current = current.getNext();
 		}
 	}
 
